@@ -24,24 +24,38 @@ for i in categorias:
     print("-", i)
 
 while True:
-    pelicula = input("\nIngrese el nombre de la película por la cual desea votar(salir para terminar): ")
+    try:
+        pelicula = input("\nIngrese el nombre de la película por la cual desea votar(salir para terminar): ")
+    except Exception as e:
+        print("Error al ingresar el nombre:", e)
+        continue
 
     if pelicula.lower() == "salir":
         break
 
     if pelicula in peliculas:
-        votos[pelicula] += 1
+        try:
+            votos[pelicula] += 1
 
-        print("Películas votadas:")
-        for nombre, cantidad in votos.items():
-            print(f"{nombre} - Votos: {cantidad}")
+            print("Películas votadas:")
+            for nombre, cantidad in votos.items():
+                print(f"{nombre} - Votos: {cantidad}")
 
-        reserva = {
-            "pelicula": pelicula,
-            "votos": votos[pelicula]
-        }
-        reservas.append(reserva)
+            reserva = {
+                "pelicula": pelicula,
+                "votos": votos[pelicula]
+            }
+
+            reservas.append(reserva)
+        except Exception as e:
+            print("Ocurrió un error al registrar el voto o la reserva:", e)
     else:
         print("La película no está disponible. Intente nuevamente.")
 
 print("\nGracias por participar en la votación.")
+
+mas_votada = max(votos, key=votos.get)
+print(f"\n La película más votada fue: {mas_votada} con {votos[mas_votada]} votos.")
+
+# Total de votos
+print(f"Total de votos registrados: {sum(votos.values())}")
