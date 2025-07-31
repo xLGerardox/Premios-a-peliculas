@@ -28,5 +28,5 @@ de errores y funciones, además de control de versiones mediante el uso de un re
 # Estructura del Proyecto
 Tendriamos un menú con las opciones que se autollama cada vez que un proceso termina y que se repite mediante 
 el uso de While True... Es decir, cada vez que un proceso llega a su fin volvera al menú, asi como cuando 
-el programa recibe una entrada de opción invalida
+el programa recibe una entrada que no es valida
 
